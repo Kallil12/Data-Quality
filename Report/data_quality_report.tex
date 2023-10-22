@@ -59,16 +59,30 @@
 \newpage
 \pagenumbering{arabic}
 % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\section{Task 1 - Reading data}
+\section{Task 1}
 
 The first part of the assignment is to read the data sent and do a quick analysis, to understand what this data is about. There are two files, both in \textit{.csv} format.
 
 
-\begin{enumerate}
-    \item What are the 10 most expensive products in the company?
-    \item What sections do the \textbf{BEBIDAS} and \textbf{PADARIA} departments have?
-    \item What was the total sale of products (in \$) of each Business Area in the first quarter or 2019?
-\end{enumerate}
+- Date fixes: the data in both files present some date inconsistencies. For example, they use '-' and '/' to separate month, day, and year. This may cause some confusion when a script tries to determine what type of data the file has.
+
+- Special Character fixes: in order to keep the data consistent, it's important to change some special characters. When sending data between different systems, so from a Microsoft Server to a Power BI dashboard, or to a .csv file it's important to have the data to be shown the same way, this cannot be guaranteed if special characters are involved. Therefore, a special character removal is an important step to keep consistency.
+
+- Data validation: it is important to check if all our data is valid. For example, checking if all cities in 'CITY\_DEALER' are cities that do exist and also are cities in which BRP has a dealer. The same should be applied to to 'STATE\_CODE'. Another step is to make sure that the cities follow a standard and are not duplicated. We can find 'Alexandria Bay' and 'Alexandria Bay,', despite being the same city, it could be considered 2 different cities without a data cleansing.
+
+- Check for duplicated records: duplicated records can affect how managers will take their decisions because they may represent the same event twice. This can come in two different ways, either by having 2 identical records on the dataset, or by having 2 different records that represent the same thing. The last one can be caused by problems like cities with different names but that represent the same place, similar to what was described in the previous topic.
+
+- Check for missing values in critical columns: check if there aren't any missing values in ID columns for example. In the files under analysis I believe that 'REG\_DEALER\_NUMBER' and 'MODEL\_NUMBER' are important columns that can't have null or empty values, therefore it's important to check if they are complete.
+
+Date Standardization: Ensure consistent date formats by converting all date entries to a standardized format (e.g., YYYY-MM-DD). This standardization prevents format-related issues when processing the data.
+
+Special Character Cleanup: Remove special characters from data entries to maintain consistency when transferring data across different systems, such as from a Microsoft Server to Power BI or a CSV file.
+
+Data Validation and Standardization: Perform data validation to verify the accuracy and consistency of location-related data. Ensure that cities and state codes are valid, adhere to standard naming conventions, and eliminate duplicated or similar but distinct entries (e.g., 'Alexandria Bay' and 'Alexandria Bay,') to avoid data duplication.
+
+Duplicate Record Detection: Detect and handle duplicated records, which can distort analysis and decision-making. This can involve identifying identical records or reconciling records representing the same entity with variations in data entry.
+
+Missing Value Assessment: Check critical columns for missing values. Columns such as 'REG\_DEALER\_NUMBER' and 'MODEL\_NUMBER' should be complete, as they are important identifiers. Address any null or empty values to maintain data integrity.
 
 \begin{itemize}
     \item item 1
